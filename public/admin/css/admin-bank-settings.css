@@ -1,0 +1,202 @@
+.user-container {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.user-actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.user-actions .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.user-actions .btn:hover {
+    background-color: #0056b3;
+}
+
+.user-container h3 {
+    margin-top: 0;
+}
+
+.user-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-container table, .user-container th, .user-container td {
+    border: 1px solid #ddd;
+}
+
+.user-container th, .user-container td {
+    padding: 10px;
+    text-align: left;
+}
+
+.user-container th {
+    background-color: #f4f4f4;
+}
+
+.user-container a, .user-container button {
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.user-container button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.user-container button:hover {
+    color: #cc0000;
+}
+
+.user-photo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-actions .btn {
+    margin-right: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+form {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Buton düzenlemeleri */
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.button-container .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    border: none;
+}
+
+.button-container .btn-primary {
+    background-color: #007bff;
+}
+
+.button-container .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.button-container .btn-secondary {
+    background-color: #6c757d;
+}
+
+.button-container .btn-secondary:hover {
+    background-color: #5a6268;
+}
+.bank-settings-container {
+    background-color: #fff; /* Beyaz arka plan */
+    border: 1px solid #ddd; /* Hafif gri sınır */
+    border-radius: 5px; /* Köşeleri yuvarlat */
+    padding: 20px; /* İç boşluk */
+    margin: 20px; /* Dış boşluk */
+}
+
+.bank-settings-actions {
+    text-align: right; /* Butonu sağa hizala */
+    margin-bottom: 20px; /* Buton ile liste arasına boşluk bırak */
+}
+
+.bank-settings-actions .btn-primary {
+    margin-right: 0; /* Sağdaki boşluğu kaldır */
+}
+
+table {
+    width: 100%; /* Tablo genişliği */
+    border-collapse: collapse; /* Sınırları birleştir */
+}
+
+table thead th {
+    background-color: #f4f4f4; /* Başlık arka plan rengi */
+    padding: 10px; /* Başlık iç boşluğu */
+    text-align: left; /* Başlık metin hizalaması */
+}
+
+table tbody td {
+    padding: 10px; /* Hücre iç boşluğu */
+    border-bottom: 1px solid #ddd; /* Hücre alt sınırı */
+}
+
+table tbody tr:last-child td {
+    border-bottom: none; /* Son satır alt sınırını kaldır */
+}
+
+table .btn {
+    border: none; /* Buton sınırını kaldır */
+    background: none; /* Arka plan rengini kaldır */
+    cursor: pointer; /* İmleci el şeklinde yap */
+    color: #007bff; /* Buton rengi */
+}
+
+table .btn:hover {
+    text-decoration: underline; /* Üzerine gelince altı çizili */
+}
+

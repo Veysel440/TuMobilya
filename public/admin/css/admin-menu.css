@@ -1,0 +1,76 @@
+.form-container, .menu-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-container h3, .menu-container h3 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+.menu-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-container table, .menu-container th, .menu-container td {
+    border: 1px solid #ddd;
+}
+
+.menu-container th, .menu-container td {
+    padding: 10px;
+    text-align: left;
+}
+
+.menu-container th {
+    background-color: #f4f4f4;
+}
+
+.menu-container a, .menu-container button {
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.menu-container button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.menu-container button:hover {
+    color: #cc0000;
+}
