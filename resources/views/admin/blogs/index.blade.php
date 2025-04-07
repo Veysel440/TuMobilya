@@ -22,7 +22,10 @@
     <main class="main-content">
         <header class="header">
             <h1>Blog Yönetimi</h1>
+<<<<<<< HEAD
             <!-- Yeni Blog Ekle Butonu -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
             <a href="{{ route('admin.blogs.create') }}" class="btn btn-success">Yeni Blog Ekle</a>
         </header>
 
@@ -33,7 +36,11 @@
                     <th>ID</th>
                     <th>Başlık</th>
                     <th>Görsel</th>
+<<<<<<< HEAD
                     <th>İçerik</th> <!-- Yeni İçerik Sütunu Eklendi -->
+=======
+                    <th>İçerik</th>
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                     <th>İşlemler</th>
                 </tr>
                 </thead>
@@ -49,7 +56,11 @@
                                 <p>Resim Yok</p>
                             @endif
                         </td>
+<<<<<<< HEAD
                         <td>{{ Str::limit($blog->content, 100) }} <!-- İçeriğin ilk 100 karakterini gösteriyoruz --></td>
+=======
+                        <td>{{ Str::limit($blog->content, 100) }}</td>
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                         <td>
                             <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="btn btn-warning">Düzenle</a>
                             <form action="{{ route('admin.blogs.destroy', $blog->id) }}" method="POST" style="display: inline-block;">

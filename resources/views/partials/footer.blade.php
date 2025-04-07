@@ -1,7 +1,10 @@
 <footer class="footer-section">
     <div class="container relative">
         <div class="row g-5 mb-5">
+<<<<<<< HEAD
             <!-- Genel Ayarlar Bölümü -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
             <div class="col-lg-4">
                 <p style="font-size: 24px; font-weight: bold;">{{ $settings?->general_title }}</p>
                 <p>{{ $settings?->general_description }}</p>

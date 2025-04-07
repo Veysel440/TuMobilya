@@ -2,12 +2,30 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Illuminate\Http\Request;
 use App\Models\Slider;
+=======
+use App\Services\SliderService;
+use Illuminate\Http\Request;
+use App\Models\Slider;
+use App\Http\Requests\StoreSliderRequest;
+use App\Http\Requests\UpdateSliderRequest;
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
+<<<<<<< HEAD
+=======
+    protected SliderService $sliderService;
+
+    public function __construct(SliderService $sliderService)
+    {
+        $this->sliderService = $sliderService;
+    }
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     public function index()
     {
         $sliders = Slider::all();
@@ -20,6 +38,7 @@ class SliderController extends Controller
         return view('admin.slider.create');
     }
 
+<<<<<<< HEAD
     public function store(Request $request)
     {
         $request->validate([
@@ -34,6 +53,11 @@ class SliderController extends Controller
             'description' => $request->description,
             'image' => $imagePath,
         ]);
+=======
+    public function store(StoreSliderRequest $request)
+    {
+        $this->sliderService->create($request->validated());
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
         return redirect()->route('admin.slider.index')->with('success', 'Slider başarıyla eklendi.');
     }
@@ -43,6 +67,7 @@ class SliderController extends Controller
         return view('admin.slider.edit', compact('slider'));
     }
 
+<<<<<<< HEAD
     public function update(Request $request, Slider $slider)
     {
         $request->validate([
@@ -60,14 +85,23 @@ class SliderController extends Controller
             'title' => $request->title,
             'description' => $request->description,
         ]);
+=======
+    public function update(UpdateSliderRequest $request, Slider $slider)
+    {
+      $this->sliderService->update($slider, $request->validated());
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
         return redirect()->route('admin.slider.index')->with('success', 'Slider başarıyla güncellendi.');
     }
 
     public function destroy(Slider $slider)
     {
+<<<<<<< HEAD
         Storage::disk('public')->delete($slider->image);
         $slider->delete();
+=======
+        $this->sliderService->delete($slider);
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
         return redirect()->route('admin.slider.index')->with('success', 'Slider başarıyla silindi.');
     }

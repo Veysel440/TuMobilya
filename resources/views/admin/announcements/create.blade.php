@@ -36,7 +36,10 @@
             </div>
         </header>
 
+<<<<<<< HEAD
         <!-- Duyuru Ekleme Formu -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="announcement-create-container">
             <form action="{{ route('admin.announcements.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

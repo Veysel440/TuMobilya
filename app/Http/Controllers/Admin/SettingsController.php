@@ -3,18 +3,31 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Settings;
+=======
+use App\Http\Requests\UpdateSettingsRequest;
+use App\Models\Settings;
+use App\Services\SettingsService;
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
+<<<<<<< HEAD
+=======
+
+    public function __construct(protected SettingsService $settingsService){}
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     public function index()
     {
         $settings = Settings::first();
         return view('admin.settings.index', compact('settings'));
     }
 
+<<<<<<< HEAD
 
     public function updateSettings(Request $request)
     {
@@ -67,6 +80,13 @@ class SettingsController extends Controller
         $settings->save();
 
         return redirect()->route('admin.settings.index')->with('success', 'Ayarlar başarıyla güncellendi.');
+=======
+    public function updateSettings(UpdateSettingsRequest $request)
+    {
+        $this->settingsService->update($request->validated());
+
+        return redirect()->route('admin.settings.index')->with('success','Ayarlar başarıyla güncellendi.');
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     }
 
 }

@@ -51,6 +51,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+<<<<<<< HEAD
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/products', [ProductController::class, 'index'])->name('product.index');
     Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
@@ -59,6 +60,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 });
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
@@ -71,6 +74,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('admin')->name('admin.')->group(function () {
+<<<<<<< HEAD
     Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
     Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
     Route::get('/menus/{id}/edit', [MenuController::class, 'edit'])->name('menus.edit');
@@ -99,6 +103,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/announcements/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('admin.announcements.edit');
     Route::put('/announcements/{announcement}', [AnnouncementController::class, 'update'])->name('admin.announcements.update');
     Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('admin.announcements.destroy');
+=======
+    Route::resource('menus', MenuController::class)->except(['show']);
+    Route::resource('sliders', SliderController::class)->except(['show']);
+    Route::resource('announcements', AnnouncementController::class)->except(['show']);
+    Route::resource('products', ProductController::class)->except(['show']);
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 });
 
 

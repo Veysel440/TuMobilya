@@ -7,9 +7,24 @@ use App\Models\Announcement;
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD
 
 class BlogPostController extends Controller
 {
+=======
+use App\Services\BlogPostService;
+use App\Http\Requests\StoreBlogPostRequest;
+use App\Http\Requests\UpdateBlogPostRequest;
+
+class BlogPostController extends Controller
+{
+    protected BlogPostService $blogPostService;
+
+    public function __construct(BlogPostService $blogPostService)
+    {
+        $this->blogPostService = $blogPostService;
+    }
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
     public function index()
     {
@@ -22,6 +37,7 @@ class BlogPostController extends Controller
         return view('admin.blogs.create');
     }
 
+<<<<<<< HEAD
     public function store(Request $request)
     {
         $request->validate([
@@ -41,10 +57,16 @@ class BlogPostController extends Controller
         }
 
         $blog->save();
+=======
+    public function store(StoreBlogPostRequest $request)
+    {
+        $this->blogPostService->create($request->validated());
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog başarıyla eklendi.');
     }
 
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -68,22 +90,33 @@ class BlogPostController extends Controller
             'content' => $request->content,
             'image' => $imagePath,
         ]);
+=======
+    public function update(UpdateBlogPostRequest $request, $id)
+    {
+        $blog = BlogPost::findOrFail($id);
+        $this->blogPostService->update($blog, $request->validated());
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog başarıyla güncellendi.');
     }
 
     public function edit($id)
     {
+<<<<<<< HEAD
         // Blog postunu buluyoruz
         $blog = BlogPost::findOrFail($id);
 
         // Edit sayfasını döndürüyoruz
+=======
+        $blog = BlogPost::findOrFail($id);
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         return view('admin.blogs.edit', compact('blog'));
     }
 
     public function destroy($id)
     {
         $blog = BlogPost::findOrFail($id);
+<<<<<<< HEAD
 
         if ($blog->image) {
             Storage::delete('public/blog_images/' . $blog->image);
@@ -94,4 +127,10 @@ class BlogPostController extends Controller
         return redirect()->route('admin.blogs.index')->with('success', 'Blog başarıyla silindi.');
     }
 
+=======
+        $this->blogPostService->delete($blog);
+
+        return redirect()->route('admin.blogs.index')->with('success', 'Blog başarıyla silindi.');
+    }
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 }

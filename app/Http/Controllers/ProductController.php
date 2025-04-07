@@ -2,12 +2,31 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+=======
+use App\Services\ProductService;
+use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+
+class ProductController extends Controller
+{
+    protected ProductService $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     public function index()
     {
         $products = Product::all();
@@ -26,6 +45,7 @@ class ProductController extends Controller
         return view('admin.product.create');
     }
 
+<<<<<<< HEAD
     public function store(Request $request)
     {
         $request->validate([
@@ -47,6 +67,11 @@ class ProductController extends Controller
             'product_details' => $request->product_details
         ]);
 
+=======
+    public function store(StoreProductRequest $request)
+    {
+        $this->productService->create($request->validated());
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla eklendi.');
     }
 
@@ -55,6 +80,7 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product'));
     }
 
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -76,16 +102,25 @@ class ProductController extends Controller
 
         $product->save();
 
+=======
+    public function update(UpdateProductRequest $request, Product $product)
+    {
+        $this->productService->update($product, $request->validated());
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla güncellendi.');
     }
 
     public function destroy(Product $product)
     {
+<<<<<<< HEAD
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
 
         $product->delete();
+=======
+        $this->productService->delete($product);
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla silindi.');
     }
 }

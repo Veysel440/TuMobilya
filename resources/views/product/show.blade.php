@@ -8,7 +8,10 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <style>
+<<<<<<< HEAD
         /* Özel stiller */
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         .product-thumbnail {
             max-width: 100%;
             height: auto;

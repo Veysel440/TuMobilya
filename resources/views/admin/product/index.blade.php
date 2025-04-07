@@ -32,7 +32,10 @@
             </div>
         </header>
 
+<<<<<<< HEAD
         <!-- Ürünler Listesi -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="product-settings-container">
             <div class="product-settings-actions">
                 <a href="{{ route('admin.product.create') }}" class="btn btn-primary">Yeni Ürün Ekle</a>
@@ -45,7 +48,11 @@
                         <th>Ürün Adı</th>
                         <th>Ürün Fotoğrafı</th>
                         <th>Fiyat</th>
+<<<<<<< HEAD
                         <th>Detaylar</th> <!-- Yeni sütun -->
+=======
+                        <th>Detaylar</th>
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                         <th>İşlemler</th>
                     </tr>
                     </thead>
@@ -55,7 +62,11 @@
                             <td>{{ $product->name }}</td>
                             <td><img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100"></td>
                             <td>{{ $product->price }} ₺</td>
+<<<<<<< HEAD
                             <td>{{ Str::limit($product->product_details, 30) }}</td> <!-- Sadece 30 karakter gösteriliyor -->
+=======
+                            <td>{{ Str::limit($product->product_details, 30) }}</td>
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                             <td>
                                 <a href="{{ route('admin.product.edit', $product->id) }}" class="btn" title="Düzenle">
                                     <i class="fas fa-edit"></i>
@@ -80,8 +91,13 @@
                                     <input type="file" name="image">
                                     <label for="price">Fiyat:</label>
                                     <input type="text" name="price" value="{{ $product->price }}" required>
+<<<<<<< HEAD
                                     <label for="product_details">Ürün Detayları:</label> <!-- Yeni alan -->
                                     <textarea name="product_details">{{ $product->product_details }}</textarea> <!-- Detaylar girişi -->
+=======
+                                    <label for="product_details">Ürün Detayları:</label>
+                                    <textarea name="product_details">{{ $product->product_details }}</textarea>
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                                     <button type="submit" class="btn btn-success">Kaydet</button>
                                 </form>
                             </td>
