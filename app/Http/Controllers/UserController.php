@@ -38,6 +38,7 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'Kullanıcı başarıyla eklendi.');
     }
+
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);

@@ -36,7 +36,10 @@
             </div>
         </header>
 
+<<<<<<< HEAD
         <!-- Ürün Ekleme Formu -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="product-create-container">
             <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

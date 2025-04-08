@@ -32,7 +32,10 @@
             </div>
         </header>
 
+<<<<<<< HEAD
         <!-- Slider Listesi -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="slider-settings-container">
             <div class="slider-settings-actions">
                 <a href="{{ route('admin.slider.create') }}" class="btn btn-primary">Yeni Slider Ekle</a>

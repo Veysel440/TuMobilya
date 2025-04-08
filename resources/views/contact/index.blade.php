@@ -8,7 +8,10 @@
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
 
+<<<<<<< HEAD
     <!-- Bootstrap CSS -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
@@ -18,11 +21,16 @@
 
 <body>
 
+<<<<<<< HEAD
 <!-- Start Header/Navigation -->
 @include('partials.navbar')
 <!-- End Header/Navigation -->
 
 <!-- Start Hero Section -->
+=======
+@include('partials.navbar')
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 <div class="hero">
     <div class="container">
         <div class="row justify-content-between">
@@ -40,9 +48,13 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <!-- End Hero Section -->
 
 <!-- Start Contact Form -->
+=======
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 <div class="untree_co-section">
     <div class="container">
         <div class="block">
@@ -123,10 +135,16 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <!-- End Contact Form -->
 @include('partials.footer')
 
 <!-- Scripts -->
+=======
+
+@include('partials.footer')
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/tiny-slider.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>

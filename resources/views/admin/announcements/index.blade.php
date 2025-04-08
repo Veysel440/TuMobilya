@@ -32,7 +32,10 @@
             </div>
         </header>
 
+<<<<<<< HEAD
         <!-- Duyurular Listesi -->
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="announcement-settings-container">
             <div class="announcement-settings-actions">
                 <a href="{{ route('admin.announcements.create') }}" class="btn btn-primary">Yeni Duyuru Ekle</a>

@@ -10,11 +10,12 @@ class BlogController extends Controller
 {
     public function index()
     {
-        // announcements ve blogPost verilerini alıyoruz
         $announcements = Announcement::all();
         $blogPosts = BlogPost::all();
 
-        // Verileri view'a gönderiyoruz
+        $announcements = Announcement::all();
+        $blogPosts = BlogPost::all();
+
         return view('blog.index', compact('announcements', 'blogPosts'));
     }
 
@@ -22,7 +23,6 @@ class BlogController extends Controller
     {
         $blogPost = BlogPost::find($id);
 
-        // Detaylı blog sayfasını döndürüyoruz
         return view('blog.show', compact('blogPost'));
     }
 

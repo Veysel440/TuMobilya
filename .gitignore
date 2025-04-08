@@ -18,6 +18,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+<<<<<<< HEAD
 /.env
 /database/*.sqlite
 /storage/*.log
+=======
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)

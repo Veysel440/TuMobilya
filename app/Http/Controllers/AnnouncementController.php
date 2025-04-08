@@ -4,8 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use App\Http\Requests\StoreAnnouncementRequest;
+use App\Http\Requests\UpdateAnnouncementRequest;
+use App\Services\FileUploadService;
+use App\Services\AnnouncementService;
+
 class AnnouncementController extends Controller
 {
+
+
+    public function __construct(
+        protected FileUploadService $fileUploadService,
+        protected AnnouncementService $announcementService
+    ) {}
+
+
     public function index()
     {
         $announcements = Announcement::all();
@@ -17,21 +30,12 @@ class AnnouncementController extends Controller
         return view('admin.announcements.create');
     }
 
-    public function store(Request $request)
+
+    public function store(StoreAnnouncementRequest $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $path = $request->file('image')->store('announcements', 'public');
-
-        Announcement::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'image' => $path,
-        ]);
+        $data = $request->validated();
+        $data['image'] = $this->fileUploadService->upload($request->file('image'), 'announcements');
+        $this->announcementService->create($data);
 
         return redirect()->route('admin.announcements.index')->with('success', 'Duyuru eklendi!');
     }
@@ -42,24 +46,17 @@ class AnnouncementController extends Controller
         return view('admin.announcements.edit', compact('announcement'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
 
+    public function update(UpdateAnnouncementRequest $request, $id)
+    {
         $announcement = Announcement::findOrFail($id);
+        $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('announcements', 'public');
-            $announcement->image = $path;
+            $data['image'] = $this->fileUploadService->upload($request->file('image'), 'announcements');
         }
 
-        $announcement->title = $request->title;
-        $announcement->description = $request->description;
-        $announcement->save();
+        $this->announcementService->update($announcement, $data);
 
         return redirect()->route('admin.announcements.index')->with('success', 'Duyuru güncellendi!');
     }

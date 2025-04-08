@@ -13,12 +13,20 @@
         }
 
         .blog-entry img {
+<<<<<<< HEAD
             max-width: 50%;  /* Fotoğrafın maksimum genişliğini %50 yaparak daha küçük hale getiriyoruz */
+=======
+            max-width: 50%;
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
             height: auto;
             margin-bottom: 20px;
             display: block;
             margin-left: auto;
+<<<<<<< HEAD
             margin-right: auto; /* Ortalanması için */
+=======
+            margin-right: auto;
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         }
 
         .blog-entry h3 {
@@ -38,12 +46,20 @@
         }
 
         .announcement-img img.announcement-image {
+<<<<<<< HEAD
             max-width: 50%;  /* Fotoğrafı aynı şekilde %50 olarak küçültüyoruz */
+=======
+            max-width: 50%;
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
             max-height: 150px;
             object-fit: cover;
             display: block;
             margin-left: auto;
+<<<<<<< HEAD
             margin-right: auto; /* Ortalanması için */
+=======
+            margin-right: auto;
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         }
     </style>
 </head>
@@ -82,6 +98,7 @@
             @foreach($blogPosts as $post)
                 <div class="col-12 col-md-12 col-lg-12 mb-5">
                     <div class="blog-entry">
+<<<<<<< HEAD
                         <!-- Fotoğraf -->
                         <img src="{{ asset('storage/blog_images/' . $post->image) }}" alt="Blog Image" class="img-fluid">
 
@@ -89,6 +106,12 @@
                         <h3>{{ $post->title }}</h3>
 
                         <!-- İçerik (Tamamı) -->
+=======
+                        <img src="{{ asset('storage/blog_images/' . $post->image) }}" alt="Blog Image" class="img-fluid">
+
+                        <h3>{{ $post->title }}</h3>
+
+>>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                         <p>{!! $post->content !!}</p>
                     </div>
                 </div>

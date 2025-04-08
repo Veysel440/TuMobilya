@@ -51,14 +51,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/products', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
-});
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
@@ -71,34 +63,10 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
-    Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
-    Route::get('/menus/{id}/edit', [MenuController::class, 'edit'])->name('menus.edit');
-    Route::put('/menus/{id}', [MenuController::class, 'update'])->name('menus.update');
-    Route::delete('/menus/{id}', [MenuController::class, 'destroy'])->name('menus.destroy');
-});
-
-Route::prefix('admin')->group(function () {
-    Route::get('/sliders', [SliderController::class, 'index'])->name('admin.slider.index');
-});
-
-Route::prefix('admin')->group(function () {
-    Route::get('/sliders', [SliderController::class, 'index'])->name('admin.slider.index');
-    Route::get('/sliders/create', [SliderController::class, 'create'])->name('admin.slider.create');
-    Route::post('/sliders', [SliderController::class, 'store'])->name('admin.slider.store');
-    Route::get('/sliders/{slider}/edit', [SliderController::class, 'edit'])->name('admin.slider.edit');
-    Route::put('/sliders/{slider}', [SliderController::class, 'update'])->name('admin.slider.update');
-    Route::delete('/sliders/{slider}', [SliderController::class, 'destroy'])->name('admin.slider.destroy');
-});
-
-
-Route::prefix('admin')->group(function () {
-    Route::get('/announcements', [AnnouncementController::class, 'index'])->name('admin.announcements.index');
-    Route::get('/announcements/create', [AnnouncementController::class, 'create'])->name('admin.announcements.create');
-    Route::post('/announcements', [AnnouncementController::class, 'store'])->name('admin.announcements.store');
-    Route::get('/announcements/{announcement}/edit', [AnnouncementController::class, 'edit'])->name('admin.announcements.edit');
-    Route::put('/announcements/{announcement}', [AnnouncementController::class, 'update'])->name('admin.announcements.update');
-    Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy'])->name('admin.announcements.destroy');
+    Route::resource('menus', MenuController::class)->except(['show']);
+    Route::resource('sliders', SliderController::class)->except(['show']);
+    Route::resource('announcements', AnnouncementController::class)->except(['show']);
+    Route::resource('products', ProductController::class)->except(['show']);
 });
 
 

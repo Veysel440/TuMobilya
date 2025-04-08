@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ProductService;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+
 
 class ProductController extends Controller
 {
+    protected ProductService $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function index()
     {
         $products = Product::all();
@@ -26,27 +38,11 @@ class ProductController extends Controller
         return view('admin.product.create');
     }
 
-    public function store(Request $request)
+
+
+    public function store(StoreProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'image' => 'nullable|image',
-            'product_details' => 'nullable|string',
-        ]);
-
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('product', 'public');
-        }
-
-        Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'image' => $imagePath,
-            'product_details' => $request->product_details
-        ]);
-
+        $this->productService->create($request->validated());
         return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla eklendi.');
     }
 
@@ -55,37 +51,24 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product'));
     }
 
-    public function update(Request $request, $id)
+
+
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'price' => 'required|numeric',
-            'product_details' => 'nullable|string',
-        ]);
-
-        $product = Product::findOrFail($id);
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->product_details = $request->product_details;
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('products', 'public');
-            $product->image = $path;
-        }
-
-        $product->save();
-
+        $this->productService->update($product, $request->validated());
         return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla güncellendi.');
     }
 
     public function destroy(Product $product)
     {
+
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
 
         $product->delete();
+
+        $this->productService->delete($product);
         return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla silindi.');
     }
 }
