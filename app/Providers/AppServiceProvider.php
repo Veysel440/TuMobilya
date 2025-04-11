@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Tüm blade şablonlarına $menus değişkenini paylaş
         view()->composer('*', function ($view) {
             $menus = Menu::all();
             $view->with('menus', $menus);

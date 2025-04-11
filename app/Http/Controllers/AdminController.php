@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ActivityLog;
 
 class AdminController extends Controller
 {
-    public function index()
+
+    public function showActivityLog()
     {
-        return view('admin.dashboard');
+        $activityLogs = ActivityLog::orderBy('created_at', 'desc')->get();
+        return view('admin.activity-log.index', compact('activityLogs'));
     }
 
     public function settings()

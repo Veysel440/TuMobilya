@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Duyuru Ekle</title>
+    <title>Menü Düzenle</title>
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-settings.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-menu.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-bank-settings.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .btn i {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 <div class="admin-container">
@@ -18,44 +23,51 @@
         </div>
         @include('admin.partials.sidebar')
     </aside>
+
     <main class="main-content">
         <header class="header">
             <div class="header-title">
-                <h1>Yeni Duyuru Ekle</h1>
+                <h1>Menü Düzenle</h1>
             </div>
-            <div class="header-actions">
+            <div class="header-user">
                 <span>Admin</span>
-                <li>
-                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> Çıkış Yap
-                    </a>
-                </li>
+                <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                </a>
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             </div>
         </header>
-        <div class="announcement-create-container">
-            <form action="{{ route('admin.announcements.store') }}" method="POST" enctype="multipart/form-data">
+
+        <section class="settings">
+            <form action="{{ route('admin.menus.update', $menu->id) }}" method="POST">
                 @csrf
+                @method('PUT')
+
                 <div class="form-group">
-                    <label for="title">Başlık:</label>
-                    <input type="text" id="title" name="title" required>
+                    <label>Sayfa Başlığı:</label>
+                    <input type="text" name="page_title" class="form-control" value="{{ $menu->page_title }}" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="image">Duyuru Fotoğrafı:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label>Sayfa Açıklaması:</label>
+                    <textarea name="page_description" class="form-control" rows="4" required>{{ $menu->page_description }}</textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="description">Açıklama:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <label>Başlık:</label>
+                    <input type="text" name="title" class="form-control" value="{{ $menu->title }}" required>
                 </div>
-                <div class="button-container">
-                    <a href="{{ route('admin.announcements.index') }}" class="btn btn-secondary">Geri Dön</a>
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+                <div class="form-group">
+                    <label>URL:</label>
+                    <input type="text" name="url" class="form-control" value="{{ $menu->url }}" required>
                 </div>
+
+                <button type="submit" class="btn btn-primary">Güncelle</button>
             </form>
-        </div>
+        </section>
     </main>
 </div>
 </body>

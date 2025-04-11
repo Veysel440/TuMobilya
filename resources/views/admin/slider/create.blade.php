@@ -36,10 +36,6 @@
             </div>
         </header>
 
-<<<<<<< HEAD
-        <!-- Slider Ekleme Formu -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="slider-create-container">
             <form action="{{ route('admin.slider.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

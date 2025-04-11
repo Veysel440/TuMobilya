@@ -51,10 +51,6 @@
                         <td>{{ $user->email }}</td>
                         <td>******</td>
                         <td>
-<<<<<<< HEAD
-                            <!-- Düzenleme butonu -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                             <button class="edit-button" onclick="editUser({{ $user->id }}, '{{ $user->email }}', '{{ $user->password }}')">
                                 <i class="fas fa-edit"></i>
                             </button>
@@ -90,10 +86,6 @@
             </form>
         </div>
 
-<<<<<<< HEAD
-        <!-- Düzenleme Formu -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="edit-form-container" style="display:none;">
             <h3>Kullanıcıyı Düzenle</h3>
             <form id="edit-user-form" action="" method="POST">

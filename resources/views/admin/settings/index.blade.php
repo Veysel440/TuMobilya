@@ -35,11 +35,6 @@
             <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
-<<<<<<< HEAD
-                <!-- İletişim Ayarları -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                 <div class="form-group">
                     <label>Telefon Numarası:</label>
                     <input type="text" name="phone" class="form-control" value="{{ $settings->phone ?? '' }}" required>
@@ -57,10 +52,6 @@
                     <input type="text" name="short_address" class="form-control" value="{{ $settings->short_address ?? '' }}" required>
                 </div>
 
-<<<<<<< HEAD
-                <!-- Sosyal Medya Ayarları -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                 <div class="form-group">
                     <label>Youtube:</label>
                     <input type="url" name="youtube" class="form-control" value="{{ $settings->youtube ?? '' }}">
@@ -78,10 +69,6 @@
                     <input type="url" name="instagram" class="form-control" value="{{ $settings->instagram ?? '' }}">
                 </div>
 
-<<<<<<< HEAD
-                <!-- Genel Ayarlar -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
                 <div class="form-group">
                     <label>Başlık:</label>
                     <input type="text" name="general_title" class="form-control" value="{{ $settings->general_title ?? '' }}">

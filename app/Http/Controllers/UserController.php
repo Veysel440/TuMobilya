@@ -38,10 +38,7 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'Kullanıcı başarıyla eklendi.');
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);

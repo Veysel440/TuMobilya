@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ürün Yönetimi</title>
+    <title>İletişim Yönetimi</title>
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-settings.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-menu.css') }}">
@@ -21,7 +21,7 @@
     <main class="main-content">
         <header class="header">
             <div class="header-title">
-                <h1>Ürün Yönetimi</h1>
+                <h1>İletişim Yönetimi</h1>
             </div>
             <div class="header-actions">
                 <span>Admin</span>
@@ -32,37 +32,37 @@
             </div>
         </header>
 
-        <div class="product-settings-container">
-            <div class="product-settings-actions">
-                <a href="{{ route('admin.product.create') }}" class="btn btn-primary">Yeni Ürün Ekle</a>
+        <div class="contact-settings-container">
+            <div class="contact-settings-actions">
+                <a href="{{ route('admin.contact.create') }}" class="btn btn-primary">Yeni Mesaj Ekle</a>
             </div>
-            <h3>Ürünler Listesi</h3>
+            <h3>Mesajlar Listesi</h3>
             <div class="table-wrapper">
                 <table>
                     <thead>
                     <tr>
-                        <th>Ürün Adı</th>
-                        <th>Ürün Fotoğrafı</th>
-                        <th>Fiyat</th>
-                        <th>Detaylar</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Email</th>
+                        <th>Mesaj</th>
                         <th>İşlemler</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($products as $product)
+                    @foreach($contacts as $contact)
                         <tr>
-                            <td>{{ $product->name }}</td>
-                            <td><img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100"></td>
-                            <td>{{ $product->price }} ₺</td>
-                            <td>{{ Str::limit($product->product_details, 30) }}</td>
+                            <td>{{ $contact->first_name }}</td>
+                            <td>{{ $contact->last_name }}</td>
+                            <td>{{ $contact->email }}</td>
+                            <td>{{ Str::limit($contact->message, 30) }}</td>
                             <td>
-                                <a href="{{ route('admin.product.edit', $product->id) }}" class="btn" title="Düzenle">
+                                <a href="{{ route('admin.contact.edit', $contact->id) }}" class="btn" title="Düzenle">
                                     <i class="fas fa-edit"></i>
                                 </a> |
-                                <form action="{{ route('admin.product.destroy', $product->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('admin.contact.destroy', $contact->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn" onclick="return confirm('Ürünü silmek istediğinizden emin misiniz?')" title="Sil">
+                                    <button type="submit" class="btn" onclick="return confirm('Mesajı silmek istediğinizden emin misiniz?')" title="Sil">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

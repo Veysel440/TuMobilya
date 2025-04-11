@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Duyuru Ekle</title>
+    <title>Yeni Menü Ekle</title>
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-settings.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-menu.css') }}">
@@ -18,44 +18,50 @@
         </div>
         @include('admin.partials.sidebar')
     </aside>
+
     <main class="main-content">
         <header class="header">
             <div class="header-title">
-                <h1>Yeni Duyuru Ekle</h1>
+                <h1>Yeni Menü Ekle</h1>
             </div>
-            <div class="header-actions">
+            <div class="header-user">
                 <span>Admin</span>
-                <li>
-                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> Çıkış Yap
-                    </a>
-                </li>
+                <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                </a>
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             </div>
         </header>
-        <div class="announcement-create-container">
-            <form action="{{ route('admin.announcements.store') }}" method="POST" enctype="multipart/form-data">
+
+        <section class="settings">
+            <form action="{{ route('admin.menus.store') }}" method="POST">
                 @csrf
+
                 <div class="form-group">
-                    <label for="title">Başlık:</label>
-                    <input type="text" id="title" name="title" required>
+                    <label for="page_title">Sayfa Başlığı:</label>
+                    <input type="text" name="page_title" id="page_title" class="form-control" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="image">Duyuru Fotoğrafı:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label for="page_description">Sayfa Açıklaması:</label>
+                    <textarea name="page_description" id="page_description" class="form-control" rows="4" required></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="description">Açıklama:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <label for="title">Menü Başlığı:</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
                 </div>
-                <div class="button-container">
-                    <a href="{{ route('admin.announcements.index') }}" class="btn btn-secondary">Geri Dön</a>
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+                <div class="form-group">
+                    <label for="url">URL:</label>
+                    <input type="text" name="url" id="url" class="form-control" required>
                 </div>
+
+                <button type="submit" class="btn btn-primary">Menü Ekle</button>
             </form>
-        </div>
+        </section>
     </main>
 </div>
 </body>

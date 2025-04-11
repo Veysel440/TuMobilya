@@ -31,11 +31,6 @@
                 </form>
             </div>
         </header>
-
-<<<<<<< HEAD
-        <!-- Duyurular Listesi -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="announcement-settings-container">
             <div class="announcement-settings-actions">
                 <a href="{{ route('admin.announcements.create') }}" class="btn btn-primary">Yeni Duyuru Ekle</a>
@@ -70,21 +65,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <tr class="edit-form" style="display:none;">
-                            <td colspan="4">
-                                <form action="{{ route('admin.announcements.update', $announcement->id) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    <label for="title">Başlık:</label>
-                                    <input type="text" name="title" value="{{ $announcement->title }}" required>
-                                    <label for="description">Açıklama:</label>
-                                    <textarea name="description">{{ $announcement->description }}</textarea>
-                                    <label for="image">Duyuru Fotoğrafı:</label>
-                                    <input type="file" name="image">
-                                    <button type="submit" class="btn btn-success">Kaydet</button>
-                                </form>
-                            </td>
-                        </tr>
                     @endforeach
                     </tbody>
                 </table>
@@ -93,15 +73,5 @@
     </main>
 </div>
 
-<script>
-    document.querySelectorAll('.btn[title="Düzenle"]').forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            const row = this.closest('tr');
-            const formRow = row.nextElementSibling;
-            formRow.style.display = formRow.style.display === 'none' ? 'table-row' : 'none';
-        });
-    });
-</script>
 </body>
 </html>

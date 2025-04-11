@@ -7,11 +7,6 @@
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <meta name="description" content="">
     <meta name="keywords" content="bootstrap, bootstrap4">
-
-<<<<<<< HEAD
-    <!-- Bootstrap CSS -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
@@ -20,7 +15,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+
 <!-- Start Header/Navigation -->
 @include('partials.navbar')
 <!-- End Header/Navigation -->
@@ -32,7 +27,7 @@
 <!-- Start Footer Section -->
 @include('partials.footer')
 <!-- End Footer Section -->
-=======
+
 
 @include('partials.navbar')
 
@@ -41,7 +36,7 @@
 
 
 @include('partials.footer')
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
+
 
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/tiny-slider.js') }}"></script>

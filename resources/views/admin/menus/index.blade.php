@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,14 +55,15 @@
                         <td>{{ $menu->page_title }}</td>
                         <td>{{ $menu->page_description }}</td>
                         <td>
-                            <button class="edit-button" onclick="editMenu({{ $menu->id }}, '{{ $menu->title }}', '{{ $menu->url }}', '{{ $menu->page_title }}', '{{ $menu->page_description }}')">
-                                <i class="fas fa-edit"></i>
-                            </button>
+                            <!-- Düzenleme butonuna tıklandığında, düzenleme sayfasına yönlendirilir -->
+                            <a href="{{ route('admin.menus.edit', $menu->id) }}" class="edit-button">
+                                <i class="fas fa-edit" style="font-size: 14px;"></i>
+                            </a>
                             <form action="{{ route('admin.menus.destroy', $menu->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="delete-button" onclick="return confirm('Menüyü silmek istediğinizden emin misiniz?')" title="Sil">
-                                    <i class="fas fa-trash"></i>
+                                    <i class="fas fa-trash" style="font-size: 14px;"></i>
                                 </button>
                             </form>
                         </td>
@@ -72,78 +73,16 @@
             </table>
         </div>
 
+        <!-- Yeni Menü Ekleme butonu -->
         <div class="form-container">
             <h3>Yeni Menü Ekle</h3>
-            <form action="{{ route('admin.menus.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label>Sayfa Başlığı:</label>
-                    <input type="text" id="page_title" name="page_title" required>
-                </div>
-                <div class="form-group">
-                    <label>Sayfa Açıklaması:</label>
-                    <textarea id="page_description" name="page_description" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Başlık:</label>
-                    <input type="text" name="title" required>
-                </div>
-                <div class="form-group">
-                    <label>URL:</label>
-                    <input type="text" name="url" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Menüyü Ekle</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div class="edit-form-container" style="display:none;">
-            <h3>Menü Düzenle</h3>
-            <form id="edit-menu-form" action="" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                    <label>Sayfa Başlığı:</label>
-                    <input type="text" id="page_title" name="page_title" required>
-                </div>
-                <div class="form-group">
-                    <label>Sayfa Açıklaması:</label>
-                    <textarea id="page_description" name="page_description" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Başlık:</label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                <div class="form-group">
-                    <label>URL:</label>
-                    <input type="text" id="url" name="url" required>
-                </div>
-                <div class="form-group">
-                    <input type="hidden" id="edit-menu-id" name="menu_id">
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
-                    <button type="button" class="btn btn-secondary" onclick="closeEditForm()">Kapat</button>
-                </div>
-            </form>
+            <a href="{{ route('admin.menus.create') }}" class="btn btn-primary">Yeni Menü Ekle</a>
         </div>
     </main>
 </div>
 
 <script>
-    function editMenu(id, title, url, pageTitle, pageDescription) {
-        document.getElementById('edit-menu-id').value = id;
-        document.getElementById('title').value = title;
-        document.getElementById('url').value = url;
-        document.getElementById('page_title').value = pageTitle;
-        document.getElementById('page_description').value = pageDescription;
-        document.getElementById('edit-menu-form').action = "{{ url('admin/menus') }}/" + id;
-        document.querySelector('.edit-form-container').style.display = 'block';
-    }
-
-    function closeEditForm() {
-        document.querySelector('.edit-form-container').style.display = 'none';
-    }
+    // Gereksiz edit ve delete işlevlerini kaldırdık
 </script>
 
 </body>

@@ -5,30 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\contact;
+use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
+use App\Services\ContactService;
 
 class ContactController extends Controller
 {
+    protected ContactService $contactService;
+
+    public function __construct(ContactService $contactService)
+    {
+        $this->contactService = $contactService;
+    }
+
     public function index()
     {
         return view('contact.index');
     }
 
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'message' => 'required|string',
-        ]);
+        $this->contactService->create($request->validated());
 
-        contact::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'message' => $request->message,
-        ]);
-
-        return redirect()->back()->with('success', 'Mesajınız başarıyla gönderildi.');
+        return redirect()->route('contact.index')->with('success', 'Mesajınız başarıyla gönderildi.');
     }
 }

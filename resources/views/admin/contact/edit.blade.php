@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Duyuru Ekle</title>
+    <title>Mesajı Düzenle</title>
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-settings.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/admin-menu.css') }}">
@@ -21,41 +21,44 @@
     <main class="main-content">
         <header class="header">
             <div class="header-title">
-                <h1>Yeni Duyuru Ekle</h1>
+                <h1>Mesajı Düzenle</h1>
             </div>
             <div class="header-actions">
                 <span>Admin</span>
-                <li>
-                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> Çıkış Yap
-                    </a>
-                </li>
+                <li><a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</a></li>
                 <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             </div>
         </header>
-        <div class="announcement-create-container">
-            <form action="{{ route('admin.announcements.store') }}" method="POST" enctype="multipart/form-data">
+
+        <div class="form-container">
+            <h3>Mesajı Düzenle</h3>
+            <form action="{{ route('admin.contact.update', $contact->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
-                    <label for="title">Başlık:</label>
-                    <input type="text" id="title" name="title" required>
+                    <label>Ad:</label>
+                    <input type="text" name="first_name" value="{{ old('first_name', $contact->first_name) }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="image">Duyuru Fotoğrafı:</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label>Soyad:</label>
+                    <input type="text" name="last_name" value="{{ old('last_name', $contact->last_name) }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Açıklama:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <label>Email:</label>
+                    <input type="email" name="email" value="{{ old('email', $contact->email) }}" required>
                 </div>
-                <div class="button-container">
-                    <a href="{{ route('admin.announcements.index') }}" class="btn btn-secondary">Geri Dön</a>
-                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                <div class="form-group">
+                    <label>Mesaj:</label>
+                    <textarea name="message" rows="4" required>{{ old('message', $contact->message) }}</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Mesajı Güncelle</button>
                 </div>
             </form>
         </div>
+
     </main>
 </div>
 </body>

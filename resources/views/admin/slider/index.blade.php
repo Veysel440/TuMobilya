@@ -31,11 +31,6 @@
                 </form>
             </div>
         </header>
-
-<<<<<<< HEAD
-        <!-- Slider Listesi -->
-=======
->>>>>>> c5ca7ad (güncelleme işlemi yapılmıştır.)
         <div class="slider-settings-container">
             <div class="slider-settings-actions">
                 <a href="{{ route('admin.slider.create') }}" class="btn btn-primary">Yeni Slider Ekle</a>
@@ -70,21 +65,6 @@
                                 </form>
                             </td>
                         </tr>
-                        <tr class="edit-form" style="display:none;">
-                            <td colspan="5">
-                                <form action="{{ route('admin.slider.update', $slider->id) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    <label for="title">Başlık:</label>
-                                    <input type="text" name="title" value="{{ $slider->title }}" required>
-                                    <label for="description">Açıklama:</label>
-                                    <textarea name="description">{{ $slider->description }}</textarea>
-                                    <label for="image">Slider Fotoğrafı:</label>
-                                    <input type="file" name="image">
-                                    <button type="submit" class="btn btn-success">Kaydet</button>
-                                </form>
-                            </td>
-                        </tr>
                     @endforeach
                     </tbody>
                 </table>
@@ -93,15 +73,5 @@
     </main>
 </div>
 
-<script>
-    document.querySelectorAll('.btn[title="Düzenle"]').forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            const row = this.closest('tr');
-            const formRow = row.nextElementSibling;
-            formRow.style.display = formRow.style.display === 'none' ? 'table-row' : 'none';
-        });
-    });
-</script>
 </body>
 </html>
